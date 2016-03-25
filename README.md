@@ -87,3 +87,8 @@ script:
 	    refreshSelect(data)：
 	    实例化对象调用refreshSelect(data),直接初始化仿select下拉选项的值，同时可以指定当前被选中的值
 	    
+	    
+	    
+兼容性：
+	IE8及以上兼容
+	    
