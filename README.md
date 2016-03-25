@@ -1,0 +1,2 @@
+# specialSelect
+specialSelect-plugin-基于jQuery插件开发的自定义插件-重写select选择框，调用实例化，针对单个仿select选择框
