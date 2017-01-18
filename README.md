@@ -24,18 +24,18 @@
 </p>
 ```html
 <div id="test" class="select_box">
-<input class="sub_data" type="hidden" readonly="readonly"/>
-<span class="show_text">请选择</span><i>▼</i>
-<ul class="select_inner">
-	<li data-value="1">测试内容一</li>
-	<li data-value="2" data-selected="selected">测试内容二</li>
-	<li data-value="3">测试内容三测试内容三</li>
-	<li data-value="4">测试内容四</li>
-	<li data-value="5">测试内容五</li>
-	<li data-value="6">测试内容六</li>
-	<li data-value="7">测试内容七</li>
-	<li data-value="8">测试内容八</li>
-</ul>
+	<input class="sub_data" type="hidden" readonly="readonly"/>
+	<span class="show_text">请选择</span><i>▼</i>
+	<ul class="select_inner">
+		<li data-value="1">测试内容一</li>
+		<li data-value="2" data-selected="selected">测试内容二</li>
+		<li data-value="3">测试内容三测试内容三</li>
+		<li data-value="4">测试内容四</li>
+		<li data-value="5">测试内容五</li>
+		<li data-value="6">测试内容六</li>
+		<li data-value="7">测试内容七</li>
+		<li data-value="8">测试内容八</li>
+	</ul>
 </div>
 ```
 
@@ -50,11 +50,11 @@
 </p>
 ```javascript
 $('.select_box').specialSelect({
-width:150,		//在autoWidth:false条件下选择框的默认宽度150，受autoWidth制约
-autoWidth:true,		//自适应全部宽度
-showNum:5,			//在autoHeight:false条件下默认显示子项数，默认显示五项，受autoHeight制约
-autoHeight:false,	//自适应全部高度，及子项全部显示	
-nullItemWidth:100,	//当选择框为空（无可选项）时，选择框的宽度设定
+	width:150,		//在autoWidth:false条件下选择框的默认宽度150，受autoWidth制约
+	autoWidth:true,		//自适应全部宽度
+	showNum:5,			//在autoHeight:false条件下默认显示子项数，默认显示五项，受autoHeight制约
+	autoHeight:false,	//自适应全部高度，及子项全部显示	
+	nullItemWidth:100,	//当选择框为空（无可选项）时，选择框的宽度设定
 });
 ```
 <p>
@@ -157,8 +157,7 @@ $('#test2').createSpecialSelect({
 			data：生成下拉框选项的数据(优先级大于url地址请求数据)<br/>
 			valueField：基本数据值(字符串或数字)<br/>
 			textFiels：基本数据字段名称(字符串)<br/>
-			注意：参数是以对象形式传入，如:
-```javascript
+			注意：参数是以对象形式传入，如:<pre>
 			$('#test').createSpecialSelect({
 	url:'data/select.json',
 	params:{
@@ -174,8 +173,7 @@ $('#test2').createSpecialSelect({
 	],
 	valueField:'id',
 	textField:'text'
-});
-```
+});</pre>
 		</td>
 		<td>动态加载数据生成选择框元素（选项）</td>
 	</tr>
