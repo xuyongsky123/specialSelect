@@ -158,7 +158,7 @@ $('#test2').createSpecialSelect({
 			valueField：基本数据值(字符串或数字)<br/>
 			textFiels：基本数据字段名称(字符串)<br/>
 			注意：参数是以对象形式传入，如:<pre>
-			$('#test').createSpecialSelect({
+$('#test').createSpecialSelect({
 	url:'data/select.json',
 	params:{
 		test:12,
