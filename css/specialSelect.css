@@ -1,5 +1,4 @@
-* {margin:0;padding:0;}
-ul,li,input {
+ul,li,input,.select_box,.select_inner {
 	  box-sizing:border-box;
 	-moz-box-sizing:border-box;
 	-webkit-box-sizing:border-box;
@@ -8,7 +7,6 @@ ul,li {list-style: none outside none;display: block;}
 .select_box {
 	position: relative;
 	display:inline-block;
-	/*min-width: 150px;*/
 	height: 24px;
 	line-height: 22px;
 	border:1px solid #ddd;
@@ -16,7 +14,7 @@ ul,li {list-style: none outside none;display: block;}
 	*display: inline;
 	*zoom:1;
 }
-.select_box li > span {
+.select_box > span {
 	position: absolute;
 	top: 0;
 	right: 0;
@@ -31,7 +29,11 @@ ul,li {list-style: none outside none;display: block;}
 	z-index: 20000;
 	overflow: hidden;
 }
-.select_box li > i {
+.dis_select_box > span {
+	background-color: #eee;
+	cursor:no-drop;
+}
+.select_box > i {
 	position: absolute;
 	top:0;
 	right: 0;
@@ -43,11 +45,10 @@ ul,li {list-style: none outside none;display: block;}
 	font-style: normal;
 	font-size: 14px;
 	font-family: Helvetica;
-	background-color: #fff;
 	z-index: 30000;
 	cursor: pointer;
 }
-.select_box li > input {
+.select_box > input {
 	position: absolute;
 	top:0;
 	right: 0;
@@ -61,9 +62,9 @@ ul,li {list-style: none outside none;display: block;}
 	cursor: pointer;
 	z-index: 10000;
 }
-.select_inner {
+ul.select_inner {
 	position: absolute;
-	width:100%;
+	width:auto;
 	top:24px;
 	left:-1px;
 	border:1px solid #ddd;
@@ -71,14 +72,15 @@ ul,li {list-style: none outside none;display: block;}
 	visibility:hidden;
 	z-index:99999;
 }
-.select_inner li {
+ul.select_inner li {
 	white-space: nowrap;
 	text-indent: 10px;
+	padding-right: 24px;
 	cursor: pointer;
 }
-.select_inner li:hover {
+ul.select_inner li:hover {
 	background:#ddd;
 }
-.select_inner > li[data-selected="selected"] {
+ul.select_inner > li[data-selected="selected"] {
 	background:#ddd;
 }

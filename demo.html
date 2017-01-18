@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8"/>  
+	<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <title>仿select选项功能实现specialSelect.js</title>
+	<link rel="stylesheet" type="text/css" href="css/specialSelect.css"/>
+	<link rel="stylesheet" type="text/css" href="css/index.css" />
+
+	<script type="text/javascript" src="//cdn.bootcss.com/jquery/1.9.1/jquery.min.js"></script>
+	<script src="js/specialSelect.js"></script>
+</head>
+<body>
+	<div class="container">
+		
+		<h2>下拉框实现(specialSelect.js)使用示例</h2>
+	    <div class="paramItem">
+	    	<strong>以下为使用组件格式化的下拉选择框</strong>
+	    </div>
+
+	    <div>默认select</div>
+		<select>
+			<option>默认内容</option>
+			<option>默认内容</option>
+			<option>默认内容默认内容默认内容默认内容</option>
+			<option>默认内容</option>
+			<option>默认内容</option>
+			<option>默认内容</option>
+			<option>默认内容</option>
+			<option>默认内容</option>
+			<option>默认内容</option>
+			<option>默认内容</option>
+			<option>默认内容</option>
+			<option>默认内容</option>
+			<option>默认内容</option>
+			<option>默认内容</option>
+			<option>默认内容</option>
+			<option>默认内容</option>
+			<option>默认内容</option>
+			<option>默认内容</option>
+			<option>默认内容</option>
+			<option>默认内容</option>
+		</select><br/><br/>
+		
+		<div>
+			<div id="test" class="select_box">
+				<input class="sub_data" type="hidden" readonly="readonly"/>
+				<span class="show_text">请选择</span><i>▼</i>
+				<ul class="select_inner">
+					<li data-value="1">测试内容一</li>
+					<li data-value="2" data-selected="selected">测试内容二</li>
+					<li data-value="3">测试内容三测试内容三</li>
+					<li data-value="4">测试内容四</li>
+					<li data-value="5">测试内容五</li>
+					<li data-value="6">测试内容六</li>
+					<li data-value="7">测试内容七</li>
+					<li data-value="8">测试内容八</li>
+				</ul>
+			</div>
+
+			<div id="test1" class="select_box">
+				<input class="sub_data" type="hidden" readonly="readonly"/>
+				<span class="show_text">请选择</span><i>▼</i>
+				<ul class="select_inner">
+					<li data-value="1">测试内容1</li>
+					<li data-value="2">测试内容2</li>
+					<li data-value="3">测试内容3</li>
+					<li data-value="4" data-selected="selected">测试内容4</li>
+					<li data-value="5">测试内容5测试内容5测试内容5测试内容5</li>
+				</ul>
+			</div>
+
+			<div id="test2" class="select_box">
+				<input class="sub_data" type="hidden" readonly="readonly"/>
+				<span class="show_text">请选择</span><i>▼</i>
+				<ul class="select_inner">
+				</ul>
+			</div>
+			<br/>
+			<br/>
+			<ul class="pointMenu">
+				<li id="geta">获取第一个下拉框选中的值</li>
+				<li id="getb">获取第二个下拉框选中的值</li>
+				<li id="getc">动态生成第三个下拉框的选项</li>
+				<li id="getd">格式化第三个动态生成的下拉框</li>
+				<li id="gete">禁用第三个下拉框</li>
+				<li id="getf">恢复第三个下拉框</li>
+				<li id="getg">获取第三个下拉框选中的值</li>
+			</ul>
+		</div>
+		
+	</div>
+
+</body>
+<script>
+
+	$(document).ready(function(){
+		
+		//格式化下拉框
+		$('.select_box').specialSelect({
+			width:150,		//在autoWidth:false条件下选择框的默认宽度150，受autoWidth制约
+			autoWidth:false,		//自适应全部宽度
+			showNum:5,			//在autoHeight:false条件下默认显示子项数，默认显示五项，受autoHeight制约
+			autoHeight:false,	//自适应全部高度，及子项全部显示	
+			nullItemWidth:100,	//当选择框为空（无可选项）时，选择框的宽度设定
+		});
+
+		//获取下拉框选中的值
+		$('#geta').click(function(){
+			alert($('#test').getSpecialSelectValue('text'));
+		});
+		$('#getb').click(function(){
+			alert($('#test1').getSpecialSelectValue());
+		});
+
+		//动态生成下拉框选项
+		$('#getc').click(function(){
+			$('#test2').createSpecialSelect({
+				url:'data/select.json',
+				params:{
+					test:12,
+					test2:123
+				},
+				data:[
+					{'id':0,'text':'测试生成1'},
+					{'id':1,'text':'测试生成2'},
+					{'id':2,'text':'测试生成3'},
+					{'id':3,'text':'测试生成测试生成测试生成4'},
+					{'id':4,'text':'测试生成5'}
+				],
+				valueField:'id',
+				textField:'text'
+			});
+		});
+
+		//再次格式化
+		$('#getd').click(function(){
+			$('#test2').specialSelect({
+				width:150,		//在autoWidth:false条件下选择框的默认宽度150，受autoWidth制约
+				autoWidth:false,		//自适应全部宽度
+				showNum:4,			//在autoHeight:false条件下默认显示子项数，默认显示五项，受autoHeight制约
+				autoHeight:false,	//自适应全部高度，及子项全部显示
+			});
+		});
+
+		//禁用第三个下拉框
+		$('#gete').click(function(){
+			//禁用下拉框
+			$('#test2').disableSpecialSelect();
+		});
+
+		//恢复第三个下拉框
+		$('#getf').click(function(){
+			//恢复可用下拉框
+			$('#test2').enableSpecialSelect();
+		});
+
+		//获取下拉框选中的值
+		$('#getg').click(function(){
+			alert($('#test2').getSpecialSelectValue('text'));
+		});
+	});
+
+</script>
+</html>
